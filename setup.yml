@@ -1,0 +1,19 @@
+---
+- hosts: all
+  gather_facts: false
+  become: true
+  become_user: root
+  become_method: sudo
+
+  tasks:
+    - name: "FIX: Ubuntu 16.04 LTS doesn't come with certain modules, required by ansible"
+      raw: apt-get install python-minimal aptitude -y 
+
+    - name: "Update & Upgrade All"
+      apt: 
+        upgrade: full
+        update_cache: yes
+
+    - name: "Set timezone to America/Sao_Paulo"
+      timezone:
+        name: America/Sao_Paulo
