@@ -24,8 +24,6 @@ services:
      - postgresql
     links:
      - postgresql
-    volumes:
-     - ./data/artifactory:/var/opt/jfrog/artifactory
     environment:
      - DB_TYPE=postgresql
      - DB_USER=admin
